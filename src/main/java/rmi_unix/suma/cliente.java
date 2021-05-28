@@ -20,12 +20,13 @@ public class cliente {
 
     public static void main(String[] args) {
         int x, y, op = 0;
+        double a, b;
 
         try {
             Registry MiRegistro = LocateRegistry.getRegistry("localhost", 1099);
             Calculadora c = (Calculadora) Naming.lookup("//localhost/Calculadora");
 
-            while (op != 5) {
+            while (op != 6) {
                 op = Integer.parseInt(JOptionPane.showInputDialog("CALCULADORA\n"
                         + "1. Sumar\n"
                         + "2 .Restar\n"
@@ -66,6 +67,18 @@ public class cliente {
                         }
 
                         JOptionPane.showMessageDialog(null, "El resultado de la divicion es: " + c.div(x, y));
+                        break;
+                        
+                    case 5:
+                        a = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor de a: "));
+                        b = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor de b: "));
+
+                        while (b == 0) {
+                            JOptionPane.showMessageDialog(null, "NO SE PUEDE DIVIDIR POR 0");
+                            b = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor de b: "));
+                        }
+
+                        JOptionPane.showMessageDialog(null, "El modulo de la divicion es: " + c.mod(a, b));
                         break;
 
                     default:

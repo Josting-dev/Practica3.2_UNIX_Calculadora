@@ -37,4 +37,9 @@ public class rmi extends UnicastRemoteObject implements Calculadora{
     public int div(int a, int b) throws RemoteException{
         return a / b;
     }
+    
+    @Override
+    public double mod(double a, double b) throws RemoteException{
+        return a % b;
+    }
 }
